@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Decor AI</title>
-  <link rel="stylesheet" href="decorAI.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecorAI Chat</title>
+    <link rel="stylesheet" href="decorAI.css">
 </head>
 <body>
-  <div class="sideBar">
-    <button onclick="newChat()">+ New Chat</button>
-    
-    <h3>Recent</h3>
-    <div id="chatHistory" class="chatHistory">
-      <p class="emptyState">No conversations yet</p>
-    </div>
-  </div>
-
-  <div class="mainContent">
-    <div class="header">
-      <h1>DecorAI</h1>
-      <p>AI-powered party design assistant</p>
-    </div>
-
-    <div class="chatArea" id="chatArea">
-      <div class="message aiMessage">
-        <div class="avatar">DA</div>
-        <div class="messageContent">
-          Hello! I'm DecorAI, your party design assistant. How can I help you transform your space today?
+    <div class="sideBar">
+        <button onclick="newChat()">+ New Chat</button>
+        
+        <div class="dark-mode-toggle">
+            <span>Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                <span class="slider"></span>
+            </label>
         </div>
-      </div>
+
+        <div class="theme-selector">
+            <select id="partyThemeSelector" onchange="selectPartyTheme()">
+                <option value="">Select a Party Theme</option>
+                <option value="Tropical Luau">Tropical Luau</option>
+                <option value="Great Gatsby 1920s">Great Gatsby (1920s)</option>
+                <option value="Superhero Bash">Superhero Bash</option>
+                <option value="Enchanted Forest">Enchanted Forest</option>
+            </select>
+        </div>
+
+        <div class="export-options">
+            <button onclick="exportChatHistory('txt')">Export as TXT</button>
+            <button onclick="exportChatHistory('pdf')">Export as PDF</button>
+        </div>
+
+        <h3>History</h3>
+        <div class="chatHistory" id="chatHistory">
+            <div class="emptyState emptyStateStyle">
+                No history yet. Start a new chat!
+            </div>
+        </div>
     </div>
 
-    <div class="inputArea">
-      <input 
-        type="text" 
-        id="userInput" 
-        placeholder="Ask me anything about party..."
-        onkeypress="handleKeyPress(event)"
-      />
-      <button onclick="sendMessage()">Send</button>
+    <div class="mainContent">
+        <div class="header">
+            <h1>DecorAI</h1>
+            <p>Your party design assistant.</p>
+        </div>
+        <div class="chatArea" id="chatArea">
+            <div class="message aiMessage">
+                <div class="avatar">AI</div>
+                <div class="messageContent">Hello! I'm DecorAI, your party design assistant. How can I help you transform your space today?</div>
+            </div>
+        </div>
+        <div class="inputArea">
+            <input type="text" id="userInput" placeholder="Ask DecorAI for design ideas..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
-  </div>
 
-  <script src="decorAI.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
