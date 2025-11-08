@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-main
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DecorAI</title>
@@ -336,104 +335,7 @@ main
         [outputBox, topBox].forEach((box) => box.innerHTML = "");
         planBox.textContent = "❌ Error: " + err.message;
       }
-      
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DecorAI Home</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #fafafa;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
-    transition: background 0.3s, color 0.3s;
-  }
-  h1 { font-size: 3rem; margin-bottom: 20px; }
-  p { font-size: 1.2rem; margin-bottom: 30px; max-width: 500px; }
-  button {
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin: 5px;
-  }
-  button:hover { background-color: #0056b3; }
-  body.dark-mode { background: #121212; color: #f0f0f0; }
-  body.dark-mode button { background-color: #1e88e5; color: #fff; }
-</style>
-</head>
-<body>
-
-<h1>Welcome to DecorAI</h1>
-<p>DecorAI lets you transform your room photos into beautifully decorated spaces using AI. Upload a photo, select your style, and get a detailed decoration plan instantly!</p>
-
-<div>
-  <button id="startBtn">Go to Room Decorator</button>
-  <button id="darkModeToggle">Dark Mode</button>
-</div>
-
-<script>
-document.getElementById('startBtn').addEventListener('click', () => {
-  window.location.href = 'decorator.html';
-const decorateForm = document.getElementById('decorateForm');
-const resultImg = document.getElementById('result');
-const planEl = document.getElementById('plan');
-
-const galleryModal = document.getElementById('galleryModal');
-const galleryContent = document.getElementById('galleryContent');
-const toggleGallery = document.getElementById('toggleGallery');
-const closeGallery = document.getElementById('closeGallery');
-const darkModeToggle = document.getElementById('darkModeToggle');
-
-let savedImages = JSON.parse(localStorage.getItem('decorAI_images') || '[]');
-
-function renderGallery() {
-  galleryContent.innerHTML = '';
-  if(savedImages.length === 0){
-    const p = document.createElement('p');
-    p.textContent = "No images yet.";
-    p.style.fontStyle = 'italic';
-    p.style.color = '#666';
-    galleryContent.appendChild(p);
-  } else {
-    savedImages.forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.onclick = () => {
-        resultImg.src = src;
-        galleryModal.style.display = 'none';
-      };
-      galleryContent.appendChild(img);
-main
     });
-  }
-}
-
-// Open gallery modal
-toggleGallery.addEventListener('click', () => {
-  renderGallery();
-  galleryModal.style.display = 'flex';
-});
-
-// Close modal
-closeGallery.addEventListener('click', () => {
-  galleryModal.style.display = 'none';
-});
-
-document.getElementById('darkModeToggle').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-});
-</script>
-
+  </script>
 </body>
 </html>

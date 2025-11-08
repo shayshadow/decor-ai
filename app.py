@@ -7,7 +7,7 @@ from google.genai import types
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["http://127.0.0.1:5500", "http://localhost:5500"]}})
+CORS(app)
 
 client = genai.Client(api_key="AIzaSyC9wUigN3kDXY2mmUXKipp0nusA9H2vM04")
 
@@ -47,16 +47,16 @@ def decorate():
         # Text prompt for decoration plan
         text_prompt = f"""
         You are an expert interior decorator.
-        Create a **brief, easy-to-follow decoration plan** for a {occasion} in a {style} style room.
-        Use simple steps and keep instructions concise.
+        Create a detailed, step-by-step decoration plan for a {occasion} in a {style} style room.
         Room size: {room_size}.
         Budget: ${budget}.
-        Materials: {materials_str}.
-        Focus on practical, DIY-friendly actions. No extra details.
-        Do not use markdown. Only plain text.
+        Available materials: {materials_str}.
+        Ensure the plan fits within budget and includes DIY-friendly suggestions.
+        Mention lighting, table decor, and spatial flow improvements.
+        Do not use any markdown. I just want plain text and indents for new lines.
         """
 
-main
+        # Generate text plan
         text_response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=text_prompt,
